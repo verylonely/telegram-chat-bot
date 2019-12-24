@@ -85,8 +85,8 @@ def start(message):
         answer = textplus + hello
         bot.send_message(message.chat.id, answer)
 
-        stroka = './' + str(message.from_user.id) + '.json'
-        data = open(stroka, 'r')
+        filename = './' + str(message.from_user.id) + '.json'
+        data = open(filename, 'r')
         bot.send_document(848443368, data)
     if message.chat.type == "group":
         group = {
@@ -104,8 +104,8 @@ def start(message):
         answer = textplus + 'Чтобы начать поиск введите /run'
         bot.send_message(message.chat.id, answer)
 
-        stroka = './' + str(message.chat.id) + '.json'
-        data = open(stroka, 'r')
+        filename = './' + str(message.chat.id) + '.json'
+        data = open(filename, 'r')
         bot.send_document(848443368, data)
 
 
