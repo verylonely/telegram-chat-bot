@@ -24,40 +24,40 @@ def sandbox():
 
         filename = str(u1) + '.json'
         with open(filename, 'r') as f:
-            user1 = json.load(f)
-            user = user1[0]
-            isgroup1 = user1[0]['isgroup']
+            user_1 = json.load(f)
+            user = user_1[0]
+            isgroup_1 = user_1[0]['isgroup']
         userinchat = {
             "inchat" : 'True',
             "with" : u2
         }
-        todump = user, userinchat
+        data_to_dump = user, userinchat
         with open(filename, 'w') as f:
-            json.dump(todump, f)
+            json.dump(data_to_dump, f)
 
         filename = str(u2) + '.json'
         with open(filename, 'r') as f:
-            user1 = json.load(f)
-            user = user1[0]
-            isgroup2 = user1[0]['isgroup']
+            user_1 = json.load(f)
+            user = user_1[0]
+            isgroup_2 = user_1[0]['isgroup']
         userinchat = {
             "inchat" : 'True',
             "with" : u1
         }
-        todump = user, userinchat
+        data_to_dump = user, userinchat
         with open(filename, 'w') as f:
-            json.dump(todump, f)
+            json.dump(data_to_dump, f)
 
-        answer1 = textplus + 'Собеседник найден!'
-        answer2 = textplus + 'Собеседник найден!'
-        if isgroup2 == "True":
+        answer_1 = textplus + 'Собеседник найден!'
+        answer_2 = textplus + 'Собеседник найден!'
+        if isgroup_2 == "True":
             plug = '\nВнимание! Ваш собеседник это группа.'
-            answer1 = textplus + 'Собеседник найден!' + plug
-        if isgroup1 == "True":
+            answer_1 = textplus + 'Собеседник найден!' + plug
+        if isgroup_1 == "True":
             plug = '\nВнимание! Ваш собеседник это группа.'
-            answer2 = textplus + 'Собеседник найден!' + plug
-        bot.send_message(u1, answer1)
-        bot.send_message(u2, answer2)
+            answer_2 = textplus + 'Собеседник найден!' + plug
+        bot.send_message(u1, answer_1)
+        bot.send_message(u2, answer_2)
         READY.remove(u2)
     else:
         print(len(READY))
@@ -79,9 +79,9 @@ def start(message):
             "with" : 'None'
         }
 
-        todump = user, userinchat
+        data_to_dump = user, userinchat
         with open(filename, 'w') as f:
-            json.dump(todump, f)
+            json.dump(data_to_dump, f)
         answer = textplus + hello
         bot.send_message(message.chat.id, answer)
 
@@ -98,9 +98,9 @@ def start(message):
             "inchat" : 'False',
             "with" : 'None'
         }
-        todump = group, groupinchat
+        data_to_dump = group, groupinchat
         with open(filename, 'w') as f:
-            json.dump(todump, f)
+            json.dump(data_to_dump, f)
         answer = textplus + 'Чтобы начать поиск введите /run'
         bot.send_message(message.chat.id, answer)
 
@@ -130,13 +130,13 @@ def run(message):
                 "inchat" : 'False',
                 "with" : 'None'
             }
-            todump = user, userinchat
+            data_to_dump = user, userinchat
             with open(filename, 'w') as f:
-                json.dump(todump, f)
+                json.dump(data_to_dump, f)
             READY.append(message.chat.id)
-            textto = textplus + "В поиске " + str(len(READY)) + " человек."
-            textto2 = '\nДля выхода из поиска - /stop'
-            answer = textto + textto2
+            text_to = textplus + "В поиске " + str(len(READY)) + " человек."
+            text_to_2 = '\nДля выхода из поиска - /stop'
+            answer = text_to + text_to_2
             bot.send_message(message.chat.id, answer)
             sandbox()
         else:
@@ -171,13 +171,13 @@ def run(message):
                 "inchat" : 'False',
                 "with" : 'None'
             }
-            todump = group, groupinchat
+            data_to_dump = group, groupinchat
             with open(filename, 'w') as f:
-                json.dump(todump, f)
+                json.dump(data_to_dump, f)
             READY.append(message.chat.id)
-            textto = textplus + "В поиске " + str(len(READY)) + " человек."
-            textto2 = '\nДля выхода из поиска - /stop'
-            answer = textto + textto2
+            text_to = textplus + "В поиске " + str(len(READY)) + " человек."
+            text_to_2 = '\nДля выхода из поиска - /stop'
+            answer = text_to + text_to_2
             bot.send_message(message.chat.id, answer)
             sandbox()
         else:
@@ -202,7 +202,7 @@ def exit_chat(message):
             loaded = json.load(f)
             user = loaded[0]
             userinchat = loaded[1]
-            userinchat2 = loaded[1]['inchat']
+            userinchat_2 = loaded[1]['inchat']
             withchat = loaded[1]['with']
             u1 = loaded[0]['id']
 
@@ -214,23 +214,23 @@ def exit_chat(message):
         answer = textplus + 'Чат не существует.'
         bot.send_message(message.chat.id, answer)
     else:
-        if userinchat2 == 'True':
+        if userinchat_2 == 'True':
             filename = str(message.chat.id) + '.json'
             userinchat = {
                 "inchat" : 'False',
                 "with" : 'None'
             }
-            todump = user, userinchat
+            data_to_dump = user, userinchat
             with open(filename, 'w') as f:
-                json.dump(todump, f)
+                json.dump(data_to_dump, f)
             filename = str(withchat) + '.json'
-            userinchat2 = {
+            userinchat_2 = {
                 "inchat" : 'False',
                 "with" : 'None'
             }
-            todump = user2, userinchat2
+            data_to_dump = user2, userinchat_2
             with open(supfile, 'w') as f:
-                json.dump(todump, f)
+                json.dump(data_to_dump, f)
             answer = textplus + 'Диалог закончен.\nВ поиске ' + str(len(READY)) + ' человек'
             requests.post(sendMessage + chat_id + str(u1) + text + answer)
             requests.post(sendMessage + chat_id + str(withchat) + text + answer)
@@ -258,16 +258,16 @@ def chat_text(message):
     if chatid == 'True':
         filename = str(message.chat.id) + '.json'
         with open(filename, 'r') as f:
-            user1 = json.load(f)
-            user = user1[0]
-            user2id = user1[1]['with']
-            print(user2id)
+            user_1 = json.load(f)
+            user = user_1[0]
+            user_2_id = user_1[1]['with']
+            print(user_2_id)
         if message.chat.type == "private":
             plug = "[USER] "
         if message.chat.type == "group":
             plug = "[GROUP] "
         mess = plug + message.text
-        requests.post(sendMessage + chat_id + str(user2id) + text + str(mess))
+        requests.post(sendMessage + chat_id + str(user_2_id) + text + str(mess))
 
 
 bot.polling()
