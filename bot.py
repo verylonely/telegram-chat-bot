@@ -16,7 +16,7 @@ filename = 'data.json'
 READY = []
 U = []
 
-def sandbox():
+def create_sandbox():
     if len(READY) >= 2:
         u1 = random.choice(READY)
         READY.remove(u1)
@@ -138,7 +138,7 @@ def run(message):
             text_to_2 = '\nДля выхода из поиска - /stop'
             answer = text_to + text_to_2
             bot.send_message(message.chat.id, answer)
-            sandbox()
+            create_sandbox()
         else:
             if userinchat == "True":
                 answer = textplus + 'Вы уже в чатe\n/exit для выхода.'
@@ -154,7 +154,7 @@ def run(message):
                     plus3 = '\nДля выхода из поиска - /stop'
                     answer = plus1 + plus2 + plus3
                     bot.send_message(message.chat.id, answer)
-                    sandbox()
+                    create_sandbox()
     if message.chat.type == "group":
         try:
             with open(filename, 'r') as f:
@@ -179,7 +179,7 @@ def run(message):
             text_to_2 = '\nДля выхода из поиска - /stop'
             answer = text_to + text_to_2
             bot.send_message(message.chat.id, answer)
-            sandbox()
+            create_sandbox()
         else:
             if message.chat.id in READY:
                 answer = textplus + 'Вы уже в очереди.'
@@ -191,7 +191,7 @@ def run(message):
                 plus3 = '\nДля выхода из поиска - /stop'
                 answer = plus1 + plus2 + plus3
                 bot.send_message(message.chat.id, answer)
-                sandbox()
+                create_sandbox()
 
 
 @bot.message_handler(commands=['exit'])
