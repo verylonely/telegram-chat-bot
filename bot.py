@@ -16,6 +16,7 @@ filename = 'data.json'
 READY = []
 U = []
 
+
 def create_sandbox():
     if len(READY) >= 2:
         u1 = random.choice(READY)
@@ -28,8 +29,8 @@ def create_sandbox():
             user = user_1[0]
             isgroup_1 = user_1[0]['isgroup']
         userinchat = {
-            "inchat" : 'True',
-            "with" : u2
+            "inchat": 'True',
+            "with": u2
         }
         data_to_dump = user, userinchat
         with open(filename, 'w') as f:
@@ -41,8 +42,8 @@ def create_sandbox():
             user = user_1[0]
             isgroup_2 = user_1[0]['isgroup']
         userinchat = {
-            "inchat" : 'True',
-            "with" : u1
+            "inchat": 'True',
+            "with": u1
         }
         data_to_dump = user, userinchat
         with open(filename, 'w') as f:
@@ -62,21 +63,21 @@ def create_sandbox():
     else:
         print(len(READY))
 
+
 @bot.message_handler(commands=['start'])
 def start(message):
-
     filename = str(message.chat.id) + '.json'
     if message.chat.type == "private":
         user = {
-            "id" : message.from_user.id,
-            "first_name" : message.from_user.first_name,
-            "last_name" : message.from_user.last_name,
-            "username" : message.from_user.username,
-            "isgroup" : 'False'
+            "id": message.from_user.id,
+            "first_name": message.from_user.first_name,
+            "last_name": message.from_user.last_name,
+            "username": message.from_user.username,
+            "isgroup": 'False'
         }
         userinchat = {
-            "inchat" : 'False',
-            "with" : 'None'
+            "inchat": 'False',
+            "with": 'None'
         }
 
         data_to_dump = user, userinchat
@@ -87,13 +88,13 @@ def start(message):
 
     if message.chat.type == "group":
         group = {
-            "id" : message.chat.id,
-            "title" : message.chat.title,
-            "isgroup" : 'True'
+            "id": message.chat.id,
+            "title": message.chat.title,
+            "isgroup": 'True'
         }
         groupinchat = {
-            "inchat" : 'False',
-            "with" : 'None'
+            "inchat": 'False',
+            "with": 'None'
         }
         data_to_dump = group, groupinchat
         with open(filename, 'w') as f:
@@ -113,15 +114,15 @@ def run(message):
                 userinchat = user[1]['inchat']
         except:
             user = {
-                "id" : message.from_user.id,
-                "first_name" : message.from_user.first_name,
-                "last_name" : message.from_user.last_name,
-                "username" : message.from_user.username,
-                "isgroup" : 'False'
+                "id": message.from_user.id,
+                "first_name": message.from_user.first_name,
+                "last_name": message.from_user.last_name,
+                "username": message.from_user.username,
+                "isgroup": 'False'
             }
             userinchat = {
-                "inchat" : 'False',
-                "with" : 'None'
+                "inchat": 'False',
+                "with": 'None'
             }
             data_to_dump = user, userinchat
             with open(filename, 'w') as f:
@@ -156,13 +157,13 @@ def run(message):
                 userinchat = user[1]['inchat']
         except:
             group = {
-                "id" : message.chat.id,
-                "title" : message.chat.title,
-                "isgroup" : 'True'
+                "id": message.chat.id,
+                "title": message.chat.title,
+                "isgroup": 'True'
             }
             groupinchat = {
-                "inchat" : 'False',
-                "with" : 'None'
+                "inchat": 'False',
+                "with": 'None'
             }
             data_to_dump = group, groupinchat
             with open(filename, 'w') as f:
@@ -210,16 +211,16 @@ def exit_chat(message):
         if userinchat_2 == 'True':
             filename = str(message.chat.id) + '.json'
             userinchat = {
-                "inchat" : 'False',
-                "with" : 'None'
+                "inchat": 'False',
+                "with": 'None'
             }
             data_to_dump = user, userinchat
             with open(filename, 'w') as f:
                 json.dump(data_to_dump, f)
             filename = str(withchat) + '.json'
             userinchat_2 = {
-                "inchat" : 'False',
-                "with" : 'None'
+                "inchat": 'False',
+                "with": 'None'
             }
             data_to_dump = user2, userinchat_2
             with open(supfile, 'w') as f:
