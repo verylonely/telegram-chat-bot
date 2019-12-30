@@ -1,14 +1,8 @@
-import requests
 import json
-import os
-import telebot
 import random
-from time import sleep
-from url import sendMessage
-from url import chat_id
-from url import text
-from url import textplus
-from url import hello
+import requests
+import telebot
+from url import *
 
 TOKEN = 'place for you token'
 bot = telebot.TeleBot(TOKEN)

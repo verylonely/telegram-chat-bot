@@ -1,4 +1,3 @@
-TOKEN = '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/'
 chat_id = '&chat_id='
 text = '&text='
 textplus = '[BOT] '
