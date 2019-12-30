@@ -3,9 +3,9 @@ import random
 import requests
 import telebot
 from url import *
+import bot_token
 
-TOKEN = 'place for you token'
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(bot_token.TOKEN)
 filename = 'data.json'
 READY = []
 U = []
